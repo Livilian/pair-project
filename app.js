@@ -15,7 +15,7 @@ const LocalStrategy = require("passport-local").Strategy;
 
 
 //we define the db connection with mongoose
-mongoose.connect("mongodb://localhost/passport-local");
+mongoose.connect("mongodb://localhost/pair-project");
 
 //routes
 const authRoutes = require("./routes/auth-routes");
@@ -79,12 +79,6 @@ passport.use(new LocalStrategy((username, password, next) => {
 //we initialize passport and passport session like a middleware
 app.use(passport.initialize());
 app.use(passport.session());
-
-
-
-
-
-
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

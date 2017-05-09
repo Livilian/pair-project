@@ -12,6 +12,8 @@ const bcryptSalt = 10;
 //we require passport to use it in our routes
 const passport      = require("passport");
 
+const ensureLogin = require("connect-ensure-login");
+
 authRoutes.get("/signup", (req, res, next) => {
   res.render("auth/signup.ejs");
 });
@@ -49,6 +51,7 @@ authRoutes.post("/signup", (req, res, next) => {
   });
 });
 
+//We have to redefine the GET method to send the errors to our view:
 authRoutes.get("/login", (req, res, next) => {
   res.render("auth/login.ejs");
 });
@@ -56,8 +59,18 @@ authRoutes.get("/login", (req, res, next) => {
 authRoutes.post("/login", passport.authenticate("local", {
   successRedirect: "/",
   failureRedirect: "/login",
-  failureFlash: true,
+  failureFlash: true,   //This is what will allow us to use flash messages in our application
   passReqToCallback: true
 }));
+
+
+authRoutes.get("/private-page", ensureLogin.ensureLoggedIn(), (req, res) => {
+  res.render("private.ejs", { user: req.user });
+});
+//we declare the logout route
+authRoutes.get("/logout", (req, res) => {
+  req.logout();
+  res.redirect("/");
+});
 
 module.exports = authRoutes;
