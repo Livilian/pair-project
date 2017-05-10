@@ -4,15 +4,14 @@ const express = require("express");
 const Routes = express.Router();
 
 const Library = require("../models/library.js");
-// requieres el formulario
-Routes.get("/", (req, res, next)=> {
-  res.render("library");
-});
+const Book = require("../models/book.js");
+
+
 //completas el formulario
-Routes.post("/", (req, res, next) => {
+Routes.post("/new", (req, res, next) => {
   const name = req.body.name;
   const userId = req.session.passport.user;
-  console.log(userId);
+
 
   const newLibrary = Library({
     name: name,
@@ -21,7 +20,7 @@ Routes.post("/", (req, res, next) => {
 
   newLibrary.save((err) => {
     if (err) {
-      res.render("/", { message: "Something went wrong" });
+      res.render("/profile", { message: "Something went wrong" });
     } else {
       res.redirect("/");
     }
@@ -31,9 +30,17 @@ Routes.post("/", (req, res, next) => {
   //   user_id: re
   // }
 });
+//En la ruta "library/:id" guardame en la variable libraryId el id de la libreria q recoges de la url
 
 Routes.get("/:id", (req, res, next)=> {
-  res.render("library");
+  let libraryId = req.params.id;
+  //buscame todos los libros que contengan en su campo Library_id esto --->req.params.id
+  //y renderizame oneLibrary y haz lo que te salga de la polla con los datos que te paso ({books}).
+  Book.find({library_id: libraryId}).then(function(books){
+    res.render("oneLibrary", {books, id: libraryId});
+
+  })
+
 });
 
 

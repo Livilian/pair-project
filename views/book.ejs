@@ -1,0 +1,30 @@
+<h2>add Book</h2>
+
+<form action="/<%= id %>/book/new" method="POST" id="form-container">
+  <label for="title">Title</label>
+  <input id="title" type="text" name="title">
+  <br><br>
+  <label for="author">Author</label>
+  <input id="author" type="text" name="author">
+  <br><br>
+  <label for="isbn">ISBN</label>
+  <input id="isbn" type="text" name="isbn">
+  <br><br>
+  <label for="genre">Genre</label>
+  <input id="genre" type="text" name="genre">
+  <br><br>
+
+
+
+  <!-- <% if (typeof message !== "undefined") { %>
+    <div class="error-message"><%= message %></div>
+  <% } %> -->
+
+
+  <button>Add Book</button>
+
+  <!-- <p class="account-message">
+    Do you already have an account?
+    <a href="/login">Login</a>
+  </p> -->
+</form>

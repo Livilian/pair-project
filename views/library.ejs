@@ -1,7 +1,11 @@
-<h2>add library</h2>
+<!-- <h2><%=%></h2>
+<p>listado de libros </p>
+<%arrayBD.forEach(function(elem){%>
+  <a href="library/<%=elem._id%>"><%=elem.name%></a>
+<%})%> -->
 
-<form action="/library" method="POST" id="form-container">
-  <label for="name">Library Name</label>
+<form action="/library/new" method="POST" id="form-container">
+  <label for="name">add book</label>
   <input id="name" type="text" name="name" placeholder="JonSnow">
 
 

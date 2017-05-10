@@ -13,6 +13,7 @@ const bcrypt        = require("bcrypt");
 const passport      = require("passport");
 const LocalStrategy = require("passport-local").Strategy;
 const User = require("./models/user");
+const Book = require("./models/book");
 
 
 //we define the db connection with mongoose
@@ -23,6 +24,7 @@ const authRoutes = require("./routes/auth-routes");
 const libraryRoutes = require("./routes/libraries");
 const index = require('./routes/index');
 const users = require('./routes/users');
+const bookRoutes = require("./routes/books");
 
 
 var app = express();
@@ -80,18 +82,15 @@ passport.use(new LocalStrategy({
 
 //me controla los middleware
 //primer parametro : prefijo de las rutas. segundo parametro: las rutas.
-
-
-
 app.use('/', index);
+app.use('/', bookRoutes);
 app.use('/', authRoutes); //?
 app.use('/library', libraryRoutes);
-app.use('/users', users);
+app.use('/', users);
+app.use('/library', bookRoutes);
 
-//we conf express-session, indicating the secret key it will use to be generated
 
 
-//we initialize passport and passport session like a middleware
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

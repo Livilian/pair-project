@@ -1,0 +1,16 @@
+
+<h1>WELCOME USER!</h1>
+
+
+<%libraries.forEach(function(library){%>
+  <a href="/library/<%=library._id%>"><%=library.name%></a>
+<%})%>
+<br><br>
+
+<form action="/library/new" method="POST" id="form-container">
+  <label for="name">add library</label>
+  <input id="name" type="text" name="name">
+  <br><br>
+
+  <button>Create library</button>
+</form>

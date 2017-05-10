@@ -3,19 +3,17 @@ const Schema = mongoose.Schema;
 
 const  bookSchema = new Schema({
   title: String,
-  autor: String,
+  author: String,
   isbn: String,
-  owner: Schema.Types.ObjectId,
+  owner: [{type: Schema.Types.ObjectId, ref: "User"}],
   genre: String,
-  imagen: String,
-  available: Boolean
-}]
-
-
+  library_id: [{type: Schema.Types.ObjectId, ref: "Library"}]
+  //imagen: String,
+  //available: Boolean
 }, {
   timestamps: { createdAt: "created_at", updatedAt: "updated_at" }
 });
 
-const User = mongoose.model("User", userSchema);
+const Book = mongoose.model("Book", bookSchema);
 
-module.exports = User;
+module.exports = Book;
