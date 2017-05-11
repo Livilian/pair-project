@@ -14,6 +14,7 @@ const passport      = require("passport");
 const LocalStrategy = require("passport-local").Strategy;
 const User = require("./models/user");
 const Book = require("./models/book");
+const expressLayouts = require("express-ejs-layouts");
 
 
 //we define the db connection with mongoose
@@ -32,6 +33,8 @@ var app = express();
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
+app.use(expressLayouts);
+app.set('layout','layouts/main-layout');
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
@@ -40,6 +43,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+
 
 app.use(session({
   secret: "our-passport-local-strategy-app",
@@ -79,6 +83,12 @@ passport.use(new LocalStrategy({
     return next(null, user);
   });
 }));
+
+app.use(function(req,res,next){
+  res.locals.title = "Lendify";
+  res.locals.user = req.user;
+  next();
+})
 
 //me controla los middleware
 //primer parametro : prefijo de las rutas. segundo parametro: las rutas.

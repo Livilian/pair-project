@@ -13,6 +13,16 @@
   <label for="genre">Genre</label>
   <input id="genre" type="text" name="genre">
   <br><br>
+  <button>Add Book</button>
+</form>
+
+<h2>Upload your photo</h2>
+  <form action="/upload" method="post" enctype="multipart/form-data">
+    <input type="text" name="name">
+    <input type="file" name="photo">
+    <input type="submit" value="Save">
+  </form>
+
 
 
 
@@ -20,11 +30,7 @@
     <div class="error-message"><%= message %></div>
   <% } %> -->
 
-
-  <button>Add Book</button>
-
   <!-- <p class="account-message">
     Do you already have an account?
     <a href="/login">Login</a>
   </p> -->
-</form>

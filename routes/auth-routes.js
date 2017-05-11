@@ -43,6 +43,7 @@ authRoutes.post("/signup", (req, res, next) => {
       if (err) {
         res.render("auth/signup", { message: "Something went wrong" });
       } else {
+        console.log("USER CREATED SUCCESS");
         res.redirect("/");
       }
     });
@@ -50,13 +51,17 @@ authRoutes.post("/signup", (req, res, next) => {
 });
 
 authRoutes.get("/login", (req, res, next) => {
-  res.render("auth/login");
+  res.render("auth/login",{title:res.locals.title + " - Mylogin"});
 });
 
 authRoutes.post("/login", passport.authenticate("local", {
   successRedirect: "/profile",
   failureRedirect: "/login",
-  failureFlash: true
 }));
+
+authRoutes.get('/logout',(req,res) => {
+  req.logout();
+  res.redirect('/');
+});
 
 module.exports = authRoutes;
