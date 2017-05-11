@@ -7,23 +7,28 @@
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
   <link rel="stylesheet" href="stylesheets/styles.css">
 
   <title><%= title %></title>
 </head>
 <body>
-  <div id="login">
-    <ul>
-      <% if(user){ %>
-        <li><p><%= user.username %></p></li>
-        <li><a href="/logout">logout</a></li>
-      <% } else { %>
-        <li><a href="/login">login</a></li>
-        <li><a href="/signup">signup</a></li>
-      <% } %>
-    </ul>
-  </div>
+  <nav class="header">
+    <div id="login" class="user-header">
+      <ul>
+        <% if(user){ %>
+          <li><span><%= user.username %></span></li>
+          <li><a href="/logout">LOGOUT</a></li>
+        <% } else { %>
+          <li><a href="/login">LOGIN</a></li>
+          <li><a href="/signup">SIGNUP</a></li>
+        <% } %>
+      </ul>
+    </div>
+  </nav>
+
 
   <%- body -%>
-  <script src="javascript/login.js"></script>
+
 </body>
+  <script src="javascript/login.js"></script>

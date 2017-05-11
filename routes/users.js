@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 const Library = require("../models/library.js");
+const User = require("../models/user.js");
 
 const { ensureLoggedIn } = require('connect-ensure-login');
 
@@ -11,7 +12,12 @@ router.get('/profile', ensureLoggedIn('/login'), function(req, res, next) {
     if (err) {
       return;
     }
-    res.render("profile",{libraries})
+    User.find({_id: userId}, (err, user) => {
+      if (err) {
+        return;
+      }
+      res.render("profile",{libraries, user})
+    });
   });
 
 });

@@ -1,28 +1,26 @@
-
-  <p><%=title%></p>
-  <header id="superior">
+<div class="homepage-bg">
+  <div class="text-homepage-wrapper">
+    <h1 class="home-title"><%=title%></h1>
+    <h2 class="home-subtitle">Organize your books the best way!</h2>
     <div id="form">
       <h3>Find your book</h3>
       <form action="" method="post">
-        <label for="title">Title</label>
         <input id="title" type="text" name="title">
-        <br><br>
-        <label for="author">Author</label>
-        <input id="author" type="text" name="author">
-        <br><br>
-        <label for="isbn">ISBN</label>
-        <input id="isbn" type="text" name="isbn">
-        <br><br>
-        <label for="genre">Genre</label>
-        <input id="genre" type="text" name="genre">
-        <br><br>
         <button>search</button>
       </form>
     </div>
-  </header>
-  <div id="inferior">
-
   </div>
 
-</body>
-</html>
+</div>
+<div class="books-wrapper row">
+
+<%books.forEach(function(elem){%>
+    <div class="col-xs-4 book-item">
+      <img src="<%=elem.imageUrl%>" alt="" class="book-img">
+      <p class="book-title"><%=elem.title%></p>
+      <p class="book-title"><%=elem.author%></p>
+      <p class="book-title"><%=elem.genre%></p>
+    </div>
+<%})%>
+
+</div>

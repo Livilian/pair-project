@@ -22,7 +22,7 @@ Routes.post("/new", (req, res, next) => {
     if (err) {
       res.render("/profile", { message: "Something went wrong" });
     } else {
-      res.redirect("/");
+      res.redirect("/profile");
     }
   });
   // const newLibrary = {
