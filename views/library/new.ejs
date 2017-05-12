@@ -1,0 +1,25 @@
+<!-- <h2><%=%></h2>
+<p>listado de libros </p>
+<%arrayBD.forEach(function(elem){%>
+  <a href="library/<%=elem._id%>"><%=elem.name%></a>
+<%})%> -->
+
+<div class="library-bg">
+  <form action="/library/new" method="POST" id="form-container">
+    <label for="name">add book</label>
+    <input id="name" type="text" name="name" placeholder="JonSnow">
+
+
+    <!-- <% if (typeof message !== "undefined") { %>
+      <div class="error-message"><%= message %></div>
+    <% } %> -->
+    <br><br>
+
+    <button>Create library</button>
+
+    <!-- <p class="account-message">
+      Do you already have an account?
+      <a href="/login">Login</a>
+    </p> -->
+  </form>
+</div>

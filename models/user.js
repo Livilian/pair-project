@@ -10,22 +10,7 @@ const  userSchema = new Schema({
   email: String,
   //imagen:  mirar file upload
   libraries:[Schema.Types.ObjectId],
-  requests: [{
-   user_id: Schema.Types.ObjectId,
-   book_id: Schema.Types.ObjectId,
- }],
- lended: [{
-  user_id: Schema.Types.ObjectId, // user to lend
-  book_id: Schema.Types.ObjectId,
-}],
-
-  borrowed: [{
-    user_id: Schema.Types.ObjectId,
-    book_id: Schema.Types.ObjectId
-
-  }]
-
-
+  borrowed: [{type: Schema.Types.ObjectId, ref:'Book'}]
 }, {
   timestamps: { createdAt: "created_at", updatedAt: "updated_at" }
 });

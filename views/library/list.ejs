@@ -1,0 +1,19 @@
+<p>ONE LIBRARY</p>
+<br><br>
+
+<% books.forEach(function(book){%>
+  <div class="col-xs-4 book-item">
+    <img src="<%=book.imageUrl%>" alt="" class="book-img">
+    <p class="book-title"><%=book.title%></p>
+    <p class="book-title"><%=book.author%></p>
+    <p class="book-subtitle"><%=book.genre%></p>
+    <% if(!book.isBorrowed) { %>
+      <a href="/book/<%=book._id%>/borrow" class="loan-book">BORROW THIS BOOK</a>
+    <% }else{ %>
+      <p><b>THIS BOOK IS ALREADY BORROWED</b></p>
+    <% } %>
+  </div>
+<%})%>
+<br><br>
+
+<a href="/book/new/<%=id%>">Add Book</a>

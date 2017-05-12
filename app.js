@@ -93,11 +93,10 @@ app.use(function(req,res,next){
 //me controla los middleware
 //primer parametro : prefijo de las rutas. segundo parametro: las rutas.
 app.use('/', index);
-app.use('/', bookRoutes);
 app.use('/', authRoutes); //?
-app.use('/library', libraryRoutes);
 app.use('/', users);
-app.use('/library', bookRoutes);
+app.use('/library', libraryRoutes);
+app.use('/book', bookRoutes);
 
 
 

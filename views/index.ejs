@@ -4,22 +4,23 @@
     <h2 class="home-subtitle">Organize your books the best way!</h2>
     <div id="form">
       <h3>Find your book</h3>
-      <form action="" method="post">
-        <input id="title" type="text" name="title">
-        <button>search</button>
+      <form action="/book/search" method="get">
+        <input id="title" type="text" name="queryGenere">
+        <button>Search</button>
       </form>
     </div>
   </div>
 
 </div>
-<div class="books-wrapper row">
+
+  <div class="books-wrapper row">
 
 <%books.forEach(function(elem){%>
     <div class="col-xs-4 book-item">
       <img src="<%=elem.imageUrl%>" alt="" class="book-img">
       <p class="book-title"><%=elem.title%></p>
-      <p class="book-title"><%=elem.author%></p>
-      <p class="book-title"><%=elem.genre%></p>
+      <p class="book-title">By <%=elem.author%></p>
+      <p class="book-subtitle"><%=elem.genre%></p>
     </div>
 <%})%>
 

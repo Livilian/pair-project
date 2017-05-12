@@ -1,0 +1,27 @@
+
+<div class="add-book">
+  <h2>Add a New Book</h2>
+
+<form action="/book/new/<%= libraryId %>" method="POST" id="form-container">
+    <label for="title">Title</label>
+    <input id="title" type="text" name="title">
+    <br><br>
+    <label for="author">Author</label>
+    <input id="author" type="text" name="author">
+    <br><br>
+    <label for="isbn">ISBN</label>
+    <input id="isbn" type="text" name="isbn">
+    <br><br>
+    <label for="genre">Genre</label>
+    <input id="genre" type="text" name="genre">
+    <br><br>
+    <button class="button-form">Add Book</button>
+</form>
+
+  <h2>Upload your photo</h2>
+    <form action="/upload" method="post" enctype="multipart/form-data">
+      <input type="text" name="name">
+      <input class="button-form" type="file" name="photo">
+      <button class="button-form" type="submit" value="Save">Save</button>
+    </form>
+</div>

@@ -1,24 +1,30 @@
-<div id="welcome">
-<div id="solowelcome">
-  <h1>Welcome <%=user[0].username%>.</h1>
-</div>
-<div class="row">
-    <%libraries.forEach(function(library){%>
-      <div class="library-wrap col-xs-3">
-        <li class="library-list">
-          <span>Library Name</span>
-          <a class="lib" href="/library/<%=library._id%>"><%=library.name%></a>
-        </li>
+<div class="principal">
+  <div id="welcome">
+  <div class="row">
+    <div id="solowelcome">
+      <h1>Welcome <%=user[0].username%>.</h1>
+    </div>
+      <%libraries.forEach(function(library){%>
+        <ul>
+          <li class="library-list">
+            <div class="lib">
+            <a href="/library/<%=library._id%>"><%=library.name%></a>
 
-      </div>
+            </div>
+          </li>
+          <a href="/library/<%=library._id%>/delete">Delete</a>
+      </ul>
       <%})%>
+      <form action="/library/new" method="POST" id="form-container">
+        <label for="name">add library</label>
+        <input id="name" type="text" name="name" placeholder="library name">
+        <br><br>
+        <button class="button-form">Add library</button>
+      </form>
+  </div>
+  <section>
 
-</div>
-<form action="/library/new" method="POST" id="form-container">
-  <label for="name">add library</label>
-  <input id="name" type="text" name="name">
-  <br><br>
+  </section>
 
-  <button>Create library</button>
-</form>
+  </div>
 </div>

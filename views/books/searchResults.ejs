@@ -1,0 +1,13 @@
+<div class="books-wrapper row search">
+  <p>Search results for: <span><%=searchQuery%></span></p>
+<%books.forEach(function(elem){%>
+  <div class="col-xs-4 book-item">
+    <img src="<%=elem.imageUrl%>" alt="" class="book-img">
+    <p class="book-title"><%=elem.title%></p>
+    <p class="book-title"><%=elem.author%></p>
+    <p class="book-subtitle"><%=elem.genre%></p>
+    <a href="/book/loan/<%=elem._id%>" class="loan-book">LOAN THIS BOOK</a>
+  </div>
+<%})%>
+
+</div>
